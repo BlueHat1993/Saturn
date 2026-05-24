@@ -1,0 +1,43 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+.env/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Distribution / packaging
+*.egg-info/
+pip-wheel-metadata/
+build/
+dist/
+
+# IDE/editor config
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and runtime files
+*.log
+
+# Lock files
+poetry.lock
+
+# Optional: ignore compiled extensions
+*.so
+*.dylib
