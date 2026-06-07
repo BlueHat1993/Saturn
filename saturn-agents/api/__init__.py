@@ -1,6 +1,3 @@
-"""API package for exposing the Saturn agentic graph workflow.
-
-This module exposes a FastAPI `app` in `api.app`.
-"""
+"""API package for exposing the Saturn search agent."""
 
 __all__ = ["app"]

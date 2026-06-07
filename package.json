@@ -1,0 +1,13 @@
+{
+  "name": "saturn",
+  "private": true,
+  "scripts": {
+    "up": "concurrently -k -n api,ui -c blue,green \"npm run api\" \"npm run ui\"",
+    "api": "cd saturn-agents && python -m api.run",
+    "ui": "cd Saturn-UI && npm run dev",
+    "install:all": "npm install && cd Saturn-UI && npm install && cd ../saturn-agents && pip install -e ."
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
