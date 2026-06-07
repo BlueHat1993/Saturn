@@ -35,8 +35,12 @@ Thumbs.db
 # Logs and runtime files
 *.log
 
+# Docker volumes
+volumes/
+
 # Lock files
 poetry.lock
+uv.lock
 
 # Optional: ignore compiled extensions
 *.so
