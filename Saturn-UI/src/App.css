@@ -19,12 +19,31 @@
   background: #faf9f6;
 }
 
-.app-header h1 {
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.35rem;
+  font-family: var(--font-palantir);
+  font-size: 1.6rem;
   font-weight: 600;
   color: #1f1f1f;
+}
+
+.app-title-icon {
+  flex-shrink: 0;
+  color: #1f1f1f;
+  animation: app-title-icon-spin 48s linear infinite;
+}
+
+@keyframes app-title-icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .app-header p {
@@ -43,10 +62,73 @@
 .app-main {
   flex: 1;
   display: grid;
-  grid-template-columns: minmax(300px, 1fr) minmax(380px, 1.25fr);
+  grid-template-columns: 72px minmax(300px, 1fr) minmax(380px, 1.25fr);
   gap: 0;
   min-height: 0;
   overflow: hidden;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.25rem;
+  border-right: 1px solid #e5e4df;
+  background: #f5f4ef;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.sidebar-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #6b6b6b;
+  padding: 0.95rem 0;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sidebar-item:hover {
+  background: #eae8de;
+  color: #1f1f1f;
+}
+
+.sidebar-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.sidebar-tooltip {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 0.75rem);
+  transform: translateY(-50%) translateX(-8px);
+  padding: 0.4rem 0.7rem;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.sidebar-item:hover .sidebar-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
 }
 
 .panel {
@@ -74,7 +156,7 @@
 
 .panel-header h2 {
   margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-palantir);
   font-size: 1rem;
   font-weight: 600;
   color: #1f1f1f;
@@ -208,7 +290,7 @@
   padding: 0.8rem 1.2rem;
   border: none;
   border-radius: 22px;
-  background: #d97757;
+  background: grey;
   color: #fff;
   font: inherit;
   font-weight: 500;
@@ -217,7 +299,7 @@
 }
 
 .chat-form button:hover:not(:disabled) {
-  background: #c4684a;
+  background: black;
 }
 
 .chat-form button:disabled {
@@ -339,7 +421,7 @@
 
 .graph-sidebar-header h3 {
   margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-palantir);
   font-size: 1rem;
   font-weight: 600;
   color: #1f1f1f;

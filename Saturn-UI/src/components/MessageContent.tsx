@@ -1,6 +1,12 @@
 import { Fragment, type ReactNode } from 'react';
 
 const BOLD_PATTERN = /\*\*(.+?)\*\*/g;
+const HEADING_PATTERN = /^(#{1,6})\s+(.*)$/;
+
+function sanitizeLine(line: string): string {
+  const match = line.match(HEADING_PATTERN);
+  return match ? match[2] : line;
+}
 
 function renderInline(text: string): ReactNode[] {
   const nodes: ReactNode[] = [];
@@ -28,12 +34,15 @@ export function MessageContent({ content }: { content: string }) {
 
   return (
     <>
-      {lines.map((line, index) => (
-        <Fragment key={index}>
-          {index > 0 && <br />}
-          {renderInline(line)}
-        </Fragment>
-      ))}
+      {lines.map((line, index) => {
+        const sanitized = sanitizeLine(line);
+        return (
+          <Fragment key={index}>
+            {index > 0 && <br />}
+            {renderInline(sanitized)}
+          </Fragment>
+        );
+      })}
     </>
   );
 }

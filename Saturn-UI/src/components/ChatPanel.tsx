@@ -28,7 +28,6 @@ export function ChatPanel({ messages, loading, onSend }: ChatPanelProps) {
     <section className="panel chat-panel">
       <header className="panel-header">
         <h2>Ask Saturn</h2>
-        <p>Search your knowledge base</p>
       </header>
 
       <div className="chat-messages">
@@ -57,7 +56,6 @@ export function ChatPanel({ messages, loading, onSend }: ChatPanelProps) {
         {loading && (
           <article className="chat-bubble assistant loading">
             <span className="chat-role">Saturn</span>
-            <p className="typing">Searching knowledge base…</p>
           </article>
         )}
 

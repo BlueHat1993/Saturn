@@ -1,7 +1,10 @@
 import { useCallback, useState } from 'react';
+import { Icon } from '@mdi/react';
+import { mdiHexagon } from '@mdi/js';
 import { querySearch } from './lib/api';
 import { ChatPanel } from './components/ChatPanel';
 import { GraphPanel } from './components/GraphPanel';
+import { Sidebar } from './components/Sidebar';
 import type { ChatMessage } from './types';
 import './App.css';
 
@@ -45,13 +48,17 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <div>
-          <h1>Saturn</h1>
+          <h1 className="app-title">
+            <Icon path={mdiHexagon} size={1.2} className="app-title-icon" />
+            Saturn
+          </h1>
           <p>Knowledge search</p>
         </div>
         {error && <span className="app-error">{error}</span>}
       </header>
 
       <main className="app-main">
+        <Sidebar />
         <ChatPanel messages={messages} loading={loading} onSend={handleSend} />
         <GraphPanel toolResponse={toolResponse} query={lastQuery} />
       </main>

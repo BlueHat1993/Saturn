@@ -83,7 +83,7 @@ function drawNodeCard(
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = colors.text;
-  ctx.font = `600 ${titleSize}px Georgia, "Times New Roman", serif`;
+  ctx.font = `600 ${titleSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
 
   const titleLines = wrapLines(ctx, title, maxTextWidth, 2);
   const subLines = subtitle ? wrapLines(ctx, subtitle, maxTextWidth, 2) : [];
@@ -264,8 +264,8 @@ export function GraphPanel({ toolResponse, query }: GraphPanelProps) {
   return (
     <section className="panel graph-panel">
       <header className="panel-header">
-        <h2>Knowledge graph</h2>
-        <p>Distance from center = relevance · click a node for details</p>
+        <h2>Mind Map</h2>
+        <p>Click a node for details</p>
       </header>
 
       {!hasResults ? (
