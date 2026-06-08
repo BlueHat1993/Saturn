@@ -2,8 +2,7 @@ import { useCallback, useState } from 'react';
 import { Icon } from '@mdi/react';
 import { mdiHexagon } from '@mdi/js';
 import { querySearch } from './lib/api';
-import { ChatPanel } from './components/ChatPanel';
-import { GraphPanel } from './components/GraphPanel';
+import { ChatPanel } from './components/ChatPanel';import { ConstellationModal } from './components/ConstellationModal';import { GraphPanel } from './components/GraphPanel';
 import { Sidebar } from './components/Sidebar';
 import type { ChatMessage } from './types';
 import './App.css';
@@ -18,6 +17,7 @@ export default function App() {
   const [lastQuery, setLastQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isConstellationOpen, setIsConstellationOpen] = useState(false);
 
   const handleSend = useCallback(async (query: string) => {
     setError(null);
@@ -44,6 +44,12 @@ export default function App() {
     }
   }, []);
 
+  const handleSidebarItemClick = useCallback((item: string) => {
+    if (item === 'Constellations') {
+      setIsConstellationOpen(true);
+    }
+  }, []);
+
   return (
     <div className="app">
       <header className="app-header">
@@ -58,10 +64,12 @@ export default function App() {
       </header>
 
       <main className="app-main">
-        <Sidebar />
+        <Sidebar onItemClick={handleSidebarItemClick} />
         <ChatPanel messages={messages} loading={loading} onSend={handleSend} />
         <GraphPanel toolResponse={toolResponse} query={lastQuery} />
       </main>
+
+      <ConstellationModal open={isConstellationOpen} onClose={() => setIsConstellationOpen(false)} />
     </div>
   );
 }

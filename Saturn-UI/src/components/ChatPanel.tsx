@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { MessageContent } from './MessageContent';
+import Loader from './Loader';
 import type { ChatMessage } from '../types';
 
 interface ChatPanelProps {
@@ -56,6 +57,9 @@ export function ChatPanel({ messages, loading, onSend }: ChatPanelProps) {
         {loading && (
           <article className="chat-bubble assistant loading">
             <span className="chat-role">Saturn</span>
+            <p>
+              <Loader label="Thinking…" />
+            </p>
           </article>
         )}
 
